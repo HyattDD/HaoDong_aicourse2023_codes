@@ -18,43 +18,43 @@ print("Train data shape:{}".format(X_train.shape))
 class MNISTDataset(Dataset):  # 继承Dataset类
 
     def __init__(self, data=X_train, label=y_train):
-        '''
+        """
         Args:
             data: numpy array, shape=(N, 784)
             label: numpy array, shape=(N, 10)
-        '''
+        """
         self.data = data
         self.label = label
 
     def __getitem__(self, index):
-        '''
+        """
         根据索引获取数据,返回数据和标签,一个tuple
-        '''
+        """
         data = self.data[index].astype('float32')  # 转换数据类型, 神经网络一般使用float32作为输入的数据类型
         label = self.label[index].astype('int64')  # 转换数据类型, 分类任务神经网络一般使用int64作为标签的数据类型
         return data, label
 
     def __len__(self):
-        '''
+        """
         返回数据集的样本数量
-        '''
+        """
         return len(self.data)
 
 
 # 构建神经网络模型
 
 class CustomModel(tlx.nn.Module):
-    '''
+    """
     这是一个自定义的MLP模型
-    '''
+    """
 
     def __init__(self):
-        '''
+        """
         这个网络包含三层全连接层
         第一层是输入层, 输入数据的维度是784, 输出数据的维度是800
         第二层是隐藏层, 输入数据的维度是800, 输出数据的维度是800
         第三层是输出层, 输入数据的维度是800, 输出数据的维度是10, 代表10个类别
-        '''
+        """
         super(CustomModel, self).__init__()  # 调用父类的构造函数
 
         # 使用Linear层构建全连接层
@@ -63,9 +63,9 @@ class CustomModel(tlx.nn.Module):
         self.linear3 = Linear(out_features=10, in_features=800)
 
     def forward(self, x):
-        '''
+        """
         定义网络的前向传播过程
-        '''
+        """
         a = self.linear1(x)
         a = self.linear2(a)
         out = self.linear3(a)
