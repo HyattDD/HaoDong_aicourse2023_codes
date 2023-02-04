@@ -60,7 +60,7 @@ net = CNN()
 
 # training settings
 batch_size = 128
-n_epoch = 500
+n_epoch = 100
 learning_rate = 0.0001
 print_freq = 5
 n_step_epoch = int(len(y_train) / batch_size)

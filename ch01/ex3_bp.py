@@ -9,7 +9,10 @@ Created on Tue Jul  2 14:49:06 2019
 
 import numpy as np
 
-X = np.array([[0,0,1], [0,1,1], [1,0,1], [1,1,1]]) # 输入数据
+X = np.array([[0,0,1], 
+              [0,1,1], 
+              [1,0,1], 
+              [1,1,1]]) # 输入数据
 y = np.array([[0], [1], [1], [1]]) # 标签数据
 
 def sigmoid(x):
@@ -44,7 +47,7 @@ class Network(object):
         self.W2 = get_weights((4, 1)) # 隐藏层到输出层的权重矩阵
         self.b2 = get_weights((1)) # 隐藏层到输出层的偏置
         self.lr = lr # 学习率
-
+     
     def backward(self, X_batch, y_batch):
         '''
         反向传播算法
